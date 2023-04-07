@@ -16,8 +16,21 @@ func main() {
 	// 	fmt.Println(i, days[i])
 	// }
 
-	for _, value := range days {
-		fmt.Println(value)
+	// for _, value := range days {
+	// 	fmt.Println(value)
+	// }
+
+	rougueValue := 1
+
+	for rougueValue < 10 { // similar to while loop
+		if rougueValue == 2 {
+			goto lco
+		}
+		fmt.Println(rougueValue)
+		rougueValue++
 	}
+
+lco:
+	fmt.Println("Jumping")
 
 }
