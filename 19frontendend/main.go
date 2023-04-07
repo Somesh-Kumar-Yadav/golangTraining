@@ -4,10 +4,11 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"net/url"
 	"strings"
 )
 
-const url string = "http://localhost:3000"
+const ur string = "http://localhost:3000"
 
 func main() {
 	fmt.Println("Welcome to web verb")
@@ -18,7 +19,7 @@ func main() {
 }
 
 func PerformGetRequest() {
-	response, err := http.Get(url + "/get")
+	response, err := http.Get(ur + "/get")
 	if err != nil {
 		panic(err)
 	}
@@ -47,7 +48,7 @@ func PerformPostJsonRequest() {
 			"price":1
 		}
 	`)
-	response, err := http.Post(url+"/post", "application/json", requestBody)
+	response, err := http.Post(ur+"/post", "application/json", requestBody)
 	if err != nil {
 		panic(err)
 	}
@@ -58,13 +59,12 @@ func PerformPostJsonRequest() {
 }
 
 func PerformPostEncodedRequest() {
-	requestBody := strings.NewReader(`
-		{
-			"name":"somesh",
-			"price":1
-		}
-	`)
-	response, err := http.Post(url+"/postform", "application/url-encoded", requestBody)
+	data := url.Values{}
+
+	data.Add("firstname", "somesh")
+	data.Add("lastname", "name")
+
+	response, err := http.PostForm(ur+"/postform", data)
 	if err != nil {
 		panic(err)
 	}
