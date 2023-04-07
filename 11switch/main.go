@@ -3,7 +3,5 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Welcome to slice")
-		 
-
+	fmt.Println("Switch")
 }
