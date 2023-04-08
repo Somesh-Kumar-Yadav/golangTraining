@@ -27,3 +27,21 @@ func serveHome(w http.ResponseWriter, r *http.Request) {
 
 	w.Write([]byte("<h1>Hello Somesh</h1>"))
 }
+
+// go list -m all (all dependencies in this module)
+
+// go list -m -versions github.com/gorilla/mux
+
+// go mod tidy (npm i)
+
+// go mod why github.com/gorilla/mux
+
+// go mod graph
+
+// go mod edit -go 1.16
+
+// go mod edit -module 1.16
+
+// go mod vendor (give folder vendor like node_module)
+
+// go run -mod=vendor main.go
