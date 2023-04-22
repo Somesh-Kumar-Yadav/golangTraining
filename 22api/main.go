@@ -48,13 +48,13 @@ func main() {
 	// Routing
 	r.HandleFunc("/", serverHome).Methods("GET")
 	r.HandleFunc("/courses", getAllCourses).Methods("GET")
-	r.HandleFunc("/course/{id}", getAllCourses).Methods("GET")
+	r.HandleFunc("/course/{id}", getOneCourse).Methods("GET")
 	r.HandleFunc("/course", createOneCourse).Methods("POST")
 	r.HandleFunc("/course/{id}", updateOneCourse).Methods("PUT")
-	r.HandleFunc("/course/{id}", updateOneCourse).Methods("DELETE")
+	r.HandleFunc("/course/{id}", deleteOneCourse).Methods("DELETE")
 
 	// listen to a port
-	log.Fatal(http.ListenAndServe(":4000", r))
+	log.Fatal(http.ListenAndServe(":4002", r))
 
 }
 
@@ -120,7 +120,7 @@ func createOneCourse(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func updateOneCourse(w http.ResponseWriter, r *http.Response) {
+func updateOneCourse(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Update one course")
 	w.Header().Set("Content-Type", "application/json")
 
@@ -146,7 +146,7 @@ func updateOneCourse(w http.ResponseWriter, r *http.Response) {
 
 }
 
-func deleteOneCourse(w http.ResponseWriter, r *http.Response) {
+func deleteOneCourse(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Delete one course")
 	w.Header().Set("Content-Type", "application/json")
 
