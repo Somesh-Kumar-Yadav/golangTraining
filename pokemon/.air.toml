@@ -1,0 +1,13 @@
+root = "."  # Set root directory.
+tmp_dir = "tmp"
+build_dir = "tmp"
+
+[build]
+  cmd = "go build -o tmp/main"
+  wait_for_exit = true
+  exclude_dir = ["tmp"]
+
+[[watcher]]
+  paths = ["main.go", "router/*.go"]  # Add files to watch.
+  ignore_paths = ["tmp/*"]
+  include_exts = ["go", "tpl"]
